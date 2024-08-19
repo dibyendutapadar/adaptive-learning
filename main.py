@@ -52,7 +52,7 @@ with st.sidebar.form("student_detail"):
     st.session_state.student_name = st.text_input("Name", key='student_name_input')
     st.session_state.topic = st.text_input("What do you want to learn?", key='topic_inpur')
     st.session_state.grade_level = st.selectbox("Current Grade Level", options=list(range(4, 10)), key='grade_level_input')
-    st.session_state.current_proficiency = st.slider("Rate your current proficiency (1-10)", 1, 10, key='proficiency_input')/10
+    current_proficiency_input = st.slider("Rate your current proficiency (1-10)", 1, 10, key='proficiency_input')/10
     st.session_state.desired_proficiency = st.slider("Desired proficiency (1-10)", 1, 10, key='desired_proficiency_input')/10
     st.session_state.submit_clicked = st.form_submit_button("Submit")
 
@@ -62,9 +62,10 @@ with st.sidebar.form("student_detail"):
 #     st.experimental_set_query_params(page='history')
 
 
-    if st.session_state.student_name and st.session_state.topic and st.session_state.grade_level and st.session_state.current_proficiency < st.session_state.desired_proficiency and st.session_state.submit_clicked:
+    if st.session_state.student_name and st.session_state.topic and st.session_state.grade_level and current_proficiency_input < st.session_state.desired_proficiency and st.session_state.submit_clicked:
         db_interactions.init_db() 
         session_id = st.session_state.session_id if 'session_id' in st.session_state else str(datetime.now().timestamp())
+        st.session_state.current_proficiency = current_proficiency_input
         st.session_state.proficiency_history.append(st.session_state.current_proficiency)
         st.session_state.session_id = session_id
 

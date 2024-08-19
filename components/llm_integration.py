@@ -106,7 +106,7 @@ def get_question(topic, grade_level, current_proficiency):
     print("##########information###########")
     print(information)
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model="llama3-70b-8192",
         messages=information,
         temperature=0,
         response_format={"type": "json_object"},
