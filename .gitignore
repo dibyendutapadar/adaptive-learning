@@ -1,3 +1,5 @@
 venv/
 .streamlit
 components/__pycache__/
+components/agents.py
+components/tasks.py
