@@ -4,13 +4,9 @@ from components.llm_integration import get_question
 from datetime import datetime
 from components import proficiency
 # proficiency_graph, question_handler, 
-import sqlite3
-import json
 import time
 import plotly.graph_objects as go
-from components.agents import student_assessor
-from components.tasks import question_creation_task
-from crewai import Crew
+
 
 
 
